@@ -1,3 +1,4 @@
+import 'package:dispatcher_app/presentation/design/styles/styles.dart';
 import 'package:dispatcher_app/presentation/ui/pages/vehicle/vehicle_list.dart';
 import 'package:flutter/material.dart';
 
@@ -11,14 +12,7 @@ class VehiclePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Dispatchers',
-          style: TextStyle(
-            color: primaryColor,
-            fontSize: fontSize16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        title: const Text('Dispatchers', style: primaryTextStyle),
         backgroundColor: surfaceColor,
         elevation: elevation0,
         centerTitle: true,

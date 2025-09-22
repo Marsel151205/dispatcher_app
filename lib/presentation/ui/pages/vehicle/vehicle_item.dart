@@ -1,6 +1,7 @@
 import 'package:dispatcher_app/presentation/design/colors/colors.dart';
 import 'package:dispatcher_app/presentation/design/dimens/dimens.dart';
 import 'package:dispatcher_app/presentation/design/images/images.dart';
+import 'package:dispatcher_app/presentation/design/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class VehicleItem extends StatelessWidget {
@@ -21,7 +22,12 @@ class VehicleItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius8),
           onTap: () {},
           child: Padding(
-            padding: const EdgeInsets.only(left: padding8, right: padding16, top: padding6, bottom: padding6),
+            padding: const EdgeInsets.only(
+              left: padding8,
+              right: padding16,
+              top: padding6,
+              bottom: padding6,
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[icMotorcycleImage, _title(), _status()],
@@ -35,10 +41,7 @@ class VehicleItem extends StatelessWidget {
   Widget _title() {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(
-          left: padding6,
-          right: padding6,
-        ),
+        padding: const EdgeInsets.only(left: padding6, right: padding6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -47,20 +50,12 @@ class VehicleItem extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               'BMW',
-              style: TextStyle(
-                color: secondaryColor,
-                fontSize: fontSize14,
-                fontWeight: FontWeight.w600,
-              ),
+              style: head2TextStyle,
             ),
             if (false)
               Text(
                 'No driver',
-                style: TextStyle(
-                  color: secondaryVariantColor,
-                  fontSize: fontSize14,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: head2TextStyle,
               )
             else
               RichText(
