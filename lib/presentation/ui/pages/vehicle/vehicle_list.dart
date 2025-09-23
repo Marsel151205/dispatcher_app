@@ -1,7 +1,11 @@
 import 'package:dispatcher_app/presentation/design/dialogs/error_dialog.dart';
 import 'package:dispatcher_app/presentation/design/dimens/dimens.dart';
+import 'package:dispatcher_app/presentation/design/utils/size_utils.dart';
 import 'package:dispatcher_app/presentation/design/widgets/accent_button.dart';
+import 'package:dispatcher_app/presentation/ui/pages/driver/driver_page.dart';
 import 'package:dispatcher_app/presentation/ui/pages/vehicle/vehicle_item.dart';
+import 'package:dispatcher_app/presentation/ui/pages/vehicle_state/vehicle_state_list.dart';
+import 'package:dispatcher_app/presentation/ui/pages/vehicle_state/vehicle_state_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,18 +23,22 @@ class VehicleList extends StatelessWidget {
   }
 
   Widget _list(BuildContext context) {
-    final safeBottomPadding = MediaQuery.of(context).padding.bottom;
-    final bottomPadding = (safeBottomPadding + padding8) * 2 + height40;
-
     return ListView.separated(
       padding: EdgeInsets.only(
         right: padding16,
         left: padding16,
         top: padding16,
-        bottom: bottomPadding,
+        bottom: getListBottomPadding(context),
       ),
       itemBuilder: (BuildContext context, int index) {
-        return VehicleItem();
+        return VehicleItem(
+          onTap: () async {
+            await _showDriverPage(context);
+          },
+          onStateTap: () async {
+            await _showVehicleStatePage(context);
+          },
+        );
       },
       separatorBuilder: (BuildContext context, int index) {
         return SizedBox(height: height8);
@@ -47,16 +55,46 @@ class VehicleList extends StatelessWidget {
           right: padding16,
           bottom: padding8,
         ),
-        child: AccentButton(title: "Update", onTap: () {
-          _showErrorDialog(context);
-        }),
+        child: AccentButton(
+          title: "Update",
+          onTap: () {
+            _showErrorDialog(context);
+          },
+        ),
       ),
     );
   }
 
   void _showErrorDialog(BuildContext context) {
-    showDialog(context: context, builder: (BuildContext context) {
-      return ErrorDialog(description: 'Server is unavailable. Please try again later.');
-    });
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return ErrorDialog(
+          description: 'Server is unavailable. Please try again later.',
+        );
+      },
+    );
+  }
+
+  Future<void> _showDriverPage(BuildContext context) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const DriverPage();
+        },
+      ),
+    );
+  }
+
+  Future<void> _showVehicleStatePage(BuildContext context) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const VehicleStatePage();
+        },
+      ),
+    );
   }
 }

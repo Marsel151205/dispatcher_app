@@ -15,7 +15,8 @@ const double height40 = 40;
 const double height20 = 20;
 
 // Width
-const double width = 40;
+const double width40 = 40;
+const double width16 = 16;
 
 // Padding
 const double padding6 = 6;

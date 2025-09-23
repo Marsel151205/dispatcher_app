@@ -11,3 +11,6 @@ final SvgPicture icParkingImage = SvgPicture.asset('assets/images/ic_parking.svg
 final SvgPicture icPickUpImage = SvgPicture.asset('assets/images/ic_pick_up.svg');
 final SvgPicture icRepairImage = SvgPicture.asset('assets/images/ic_repair.svg');
 final SvgPicture icLoadImage = SvgPicture.asset('assets/images/ic_load.svg');
+final SvgPicture icBackImage = SvgPicture.asset('assets/images/ic_back.svg');
+final SvgPicture icDriverImage = SvgPicture.asset('assets/images/ic_driver.svg');
+final SvgPicture icCheckImage = SvgPicture.asset('assets/images/ic_check.svg');

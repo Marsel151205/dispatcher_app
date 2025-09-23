@@ -5,7 +5,10 @@ import 'package:dispatcher_app/presentation/design/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class VehicleItem extends StatelessWidget {
-  const VehicleItem({super.key});
+  final Function() onTap;
+  final Function() onStateTap;
+
+  const VehicleItem({super.key, required this.onTap, required this.onStateTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class VehicleItem extends StatelessWidget {
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(radius8),
-          onTap: () {},
+          onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.only(
               left: padding8,
@@ -53,31 +56,15 @@ class VehicleItem extends StatelessWidget {
               style: head2TextStyle,
             ),
             if (false)
-              Text(
-                'No driver',
-                style: head2TextStyle,
-              )
+              Text('No driver', style: head2TextStyle)
             else
               RichText(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 text: TextSpan(
-                  style: TextStyle(fontSize: fontSize14),
                   children: <TextSpan>[
-                    TextSpan(
-                      text: 'Driver: ',
-                      style: TextStyle(
-                        color: secondaryVariantColor,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Paul',
-                      style: TextStyle(
-                        color: secondaryColor,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    TextSpan(text: 'Driver: ', style: head3TextStyle),
+                    TextSpan(text: 'Paul', style: head2TextStyle),
                   ],
                 ),
               ),
@@ -88,20 +75,13 @@ class VehicleItem extends StatelessWidget {
   }
 
   Widget _status() {
-    return Padding(
-      padding: const EdgeInsets.only(right: padding16),
+    return InkWell(
+      onTap: onStateTap,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           icParkingImage,
-          Text(
-            'parking',
-            style: TextStyle(
-              color: secondaryColor,
-              fontWeight: FontWeight.w400,
-              fontSize: fontSize12,
-            ),
-          ),
+          Text('parking', style: additional1TextStyle),
         ],
       ),
     );
